@@ -20,5 +20,16 @@ module.exports = merge(common, {
     filename: '[name].bundle.js',
     chunkFilename: '[name].[chunkhash].bundle.js',
     path: path.resolve(__dirname, '../output')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
+    ]
   }
 })

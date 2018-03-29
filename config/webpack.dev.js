@@ -13,7 +13,6 @@ let config = merge(common, {
         'NODE_ENV': '"development"'
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[name].css'
@@ -30,6 +29,17 @@ let config = merge(common, {
     host: 'localhost',
     historyApiFallback: true,
     before: mockRouter
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          'css-loader'
+        ]
+      }
+    ]
   }
 })
 
