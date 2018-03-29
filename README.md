@@ -94,3 +94,6 @@ axios.get('/data').then(data => {
   console.log(data)
 })
 ```
+
+## 单页应用
+1. Vue.js 请切换到vue分支
