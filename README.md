@@ -10,6 +10,8 @@
 1. 自动刷新
 2. 数据模拟
 3. es6/7语法
+4. css-loader
+5. file-loader
 
 ## todo (欢迎pr)
 1. 单元测试
@@ -62,6 +64,7 @@ $ npm install
 ## 开发/调试
 ```$xslt
 $ npm run start
+$ open http://localhost:8081/app.html
 ```
 
 ## 构建
