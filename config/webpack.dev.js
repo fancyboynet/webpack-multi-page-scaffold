@@ -27,6 +27,7 @@ let config = merge(common, {
   devServer: {
     contentBase: path.resolve(__dirname, '../output'),
     host: 'localhost',
+    port: 8081,
     historyApiFallback: true,
     before: mockRouter
   },

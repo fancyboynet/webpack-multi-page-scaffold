@@ -1,15 +1,10 @@
 const fs = require('fs')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 let entry = {}
 let plugins = [
-  new CleanWebpackPlugin('output', {
-    root: process.cwd()
-  }),
   new webpack.NamedModulesPlugin(),
   new webpack.HotModuleReplacementPlugin()
 ]
@@ -33,6 +28,11 @@ pages.map((v, i) => {
 module.exports = {
   entry: entry,
   plugins: plugins,
+  resolve: {
+    alias: {
+      widget: path.join(__dirname, '../widget')
+    }
+  },
   optimization: {
     splitChunks: {
       chunks: 'all',

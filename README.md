@@ -41,6 +41,8 @@
 │   │    └── ...
 │   ├── home
 │
+├── widget // 模块目录
+│
 ├── test // 测试
 │
 ├── output // 构建目录
@@ -77,6 +79,24 @@ $ npm run build
 $ npm run new pageName
 ```
 
+## widget
+由于webpack模块的引入规则，还是约定一个统一的模块目录会方便一些
+`webpack.common.js`
+```js
+{
+  resolve: {
+      alias: {
+        widget: path.join(__dirname, '../widget')
+      }
+    }
+}
+
+```
+```js
+import moduleA from 'widget/a'
+import moduleB from 'widget/b'
+```
+
 ## 数据模拟
 `mock/router.js`下定义数据接口
 ```js
@@ -87,6 +107,17 @@ module.exports = function (app) {
     })
   })
 }
+```
+代理其他数据接口
+```js
+const request = require('request')
+module.exports = function (app) {
+  app.use('/api/', function(req, res) {
+    let url = `http://localhost:3000/api${req.url}`
+    req.pipe(request(url)).pipe(res)
+  })
+}
+
 ```
 请求
 ```js

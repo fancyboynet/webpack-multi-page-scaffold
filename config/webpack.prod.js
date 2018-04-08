@@ -2,10 +2,14 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
   plugins: [
+    new CleanWebpackPlugin('output', {
+      root: process.cwd()
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'
