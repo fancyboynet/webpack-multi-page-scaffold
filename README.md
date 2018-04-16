@@ -15,7 +15,7 @@
 
 ## todo (欢迎pr)
 1. 单元测试
-
+2. 热更新（暂时没找到`html-webpack-plugin`的热更新解决方案）
 ### 目录
 
 ```
@@ -79,15 +79,13 @@ $ npm run build
 $ npm run new pageName
 ```
 
-## widget
-由于webpack模块的引入规则，还是约定一个统一的模块目录会方便一些
+## 从根目录引入模块
+目前默认把项目根目录加入到模块搜寻目录中
 `webpack.common.js`
 ```js
 {
   resolve: {
-      alias: {
-        widget: path.join(__dirname, '../widget')
-      }
+      modules: [process.cwd(), "node_modules"]
     }
 }
 

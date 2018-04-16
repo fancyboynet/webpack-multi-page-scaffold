@@ -4,10 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 let entry = {}
-let plugins = [
-  new webpack.NamedModulesPlugin(),
-  new webpack.HotModuleReplacementPlugin()
-]
+let plugins = []
 
 let pages = fs.readdirSync(path.join(__dirname, '../page'))
 
@@ -24,14 +21,11 @@ pages.map((v, i) => {
     template: `./page/${v}/index.html`
   }))
 })
-
 module.exports = {
   entry: entry,
   plugins: plugins,
   resolve: {
-    alias: {
-      widget: path.join(__dirname, '../widget')
-    }
+    modules: [process.cwd(), "node_modules"]
   },
   optimization: {
     splitChunks: {
