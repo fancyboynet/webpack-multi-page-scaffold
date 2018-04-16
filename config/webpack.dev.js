@@ -4,6 +4,7 @@ const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const mockRouter = require('../mock/router')
+const buildConfig = require('./build')
 
 let config = merge(common, {
   mode: 'development',
@@ -24,10 +25,10 @@ let config = merge(common, {
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
-    path: path.resolve(__dirname, '../output')
+    path: path.resolve(__dirname, `../${buildConfig.outputName}`)
   },
   devServer: {
-    contentBase: path.resolve(__dirname, '../output'),
+    contentBase: path.resolve(__dirname, `../${buildConfig.outputName}`),
     hot: false,
     host: 'localhost',
     port: 8081,
