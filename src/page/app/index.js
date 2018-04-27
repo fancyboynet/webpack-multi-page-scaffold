@@ -1,8 +1,8 @@
 import './style.css'
 import axios from 'axios'
-import hi from 'widget/hi'
+import hello from 'widget/hello'
 import data from './data.json' // import json file
-hi()
+hello()
 console.log(data)
 // 异步加载
 import(/* webpackChunkName: "print" */ './print').then((printMe) => {

@@ -19,41 +19,45 @@
 ### 目录
 
 ```
-├── assert // 公共资源目录
-│   └── font
+├── src // 源码目录
+│       │
+│       ├── page // 页面目录
+│       │       ├── app
+│       │       │       ├── index.html
+│       │       │       ├── index.js
+│       │       │       ├── style.css
+│       │       │       └── ...
+│       │       ├── home
+│       │       
+│       ├── assert // 公共资源目录
+│       │       └── font
+│       │
+│       ├── anything // 根据项目特征创建
 │
+│
+├── dist // 构建目录
+│       ├── app.html
+│       ├── home.html
+│       ├── runtime.bundle.js
+│       └── ...
+│
+│     
 ├── script // npm 脚本
-│   └── new.js
+│       └── newpage.js
 │
 ├── config // 配置
-│   ├── webpack.prod.js
-│   ├── webpack.dev.js
-│   └── webpack.common.js
+│       ├── webpack.prod.js
+│       ├── webpack.dev.js
+│       └── webpack.common.js
 │
 ├── mock // 数据模拟
-│   └── router.js
-│
-├── page // 页面目录
-│   ├── app
-│   │    ├── index.html
-│   │    ├── index.js
-│   │    ├── style.css
-│   │    └── ...
-│   ├── home
-│
-├── widget // 模块目录
+│       └── router.js
 │
 ├── test // 测试
 │
-├── output // 构建目录
-│   ├── app.html
-│   ├── home.html
-│   ├── runtime.bundle.js
-│   └── ...
-│
 ├── node_modules // 生态
 │
-├── anything // 根据项目特征创建
+
 
 ```
 ## 安装
@@ -79,13 +83,13 @@ $ npm run build
 $ npm run new pageName
 ```
 
-## 从根目录引入模块
-目前默认把项目根目录加入到模块搜寻目录中
+## 相对源码根目录引入模块
+目前默认把源码根目录(src)加入到模块搜寻目录中
 `webpack.common.js`
 ```js
 {
   resolve: {
-      modules: [process.cwd(), "node_modules"]
+      modules: [srcRoot, "node_modules"]
     }
 }
 
