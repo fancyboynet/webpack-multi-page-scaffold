@@ -29,7 +29,7 @@ let config = merge(common, {
   },
   devServer: {
     contentBase: path.resolve(__dirname, `../${buildConfig.outputName}`),
-    hot: false,
+    hot: true,
     host: 'localhost',
     port: 8081,
     historyApiFallback: true,
