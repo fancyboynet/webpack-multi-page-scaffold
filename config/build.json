@@ -1,3 +1,5 @@
 {
-  "outputName": "dist"
+  "outputName": "dist",
+  "host": "localhost",
+  "port": 8081
 }
