@@ -41,17 +41,6 @@ let config = merge(common, {
     historyApiFallback: true,
     quiet: true,
     before: mockRouter
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          'css-loader'
-        ]
-      }
-    ]
   }
 })
 

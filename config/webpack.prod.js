@@ -3,12 +3,27 @@ const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const common = require('./webpack.common.js')
 const buildConfig = require('./build')
 
 module.exports = merge(common, {
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: 'common'
+    },
+    runtimeChunk: {
+      name: 'runtime'
+    },
+    minimizer: [
+      new UglifyJsPlugin(),
+      new OptimizeCssAssetsPlugin({})
+    ]
+  },
   plugins: [
-    new CleanWebpackPlugin('output', {
+    new CleanWebpackPlugin(buildConfig.outputName, {
       root: process.cwd()
     }),
     new webpack.DefinePlugin({
@@ -25,16 +40,5 @@ module.exports = merge(common, {
     filename: '[name].bundle.js',
     chunkFilename: '[name].[chunkhash].bundle.js',
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      }
-    ]
   }
 })
