@@ -32,13 +32,13 @@ module.exports = merge(common, {
       }
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[name].[chunkhash].css'
+      filename: `${buildConfig.staticName}/[name].css`,
+      chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].css`
     })
   ],
   output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].[chunkhash].bundle.js',
+    filename: `${buildConfig.staticName}/[name].bundle.js`,
+    chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].bundle.js`,
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
   }
 })

@@ -49,12 +49,15 @@
 │       └── newpage.js
 │
 ├── config // 配置
+│       ├── build.json 
 │       ├── webpack.prod.js
 │       ├── webpack.dev.js
 │       └── webpack.common.js
 │
 ├── mock // 数据模拟
 │       └── router.js
+│
+├── static // 非模块目录，会直接拷贝
 │
 ├── test // 测试
 │

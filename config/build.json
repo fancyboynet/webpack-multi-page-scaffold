@@ -1,5 +1,7 @@
 {
   "outputName": "dist",
+  "staticName": "static",
+  "templateName": "./",
   "host": "localhost",
   "port": 8081
 }
