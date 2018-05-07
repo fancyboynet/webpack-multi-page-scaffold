@@ -55,7 +55,16 @@ module.exports = {
         test: /\.css$/,
         use: [
           isDevMode ? "style-loader": MiniCssExtractPlugin.loader,
-          'css-loader'
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                require('autoprefixer')()
+              ]
+            }
+          }
         ]
       },
       {
