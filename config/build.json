@@ -1,8 +1,8 @@
 {
   "outputName": "dist",
   "staticName": "static",
-  "templateName": "views",
-  "publicPath": "",
+  "templateName": "./",
+  "publicPath": "/",
   "host": "localhost",
   "port": 8081
 }
