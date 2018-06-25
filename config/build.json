@@ -3,6 +3,7 @@
   "staticName": "static",
   "templateName": "./",
   "publicPath": "/",
+  "includePage": [],
   "host": "localhost",
   "port": 8081
 }

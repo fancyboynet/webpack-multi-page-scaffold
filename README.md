@@ -6,12 +6,11 @@
 1. [fis3](http://fex-team.github.io/fis3/index.html)
 2. [基于fis3的PC端纯静态解决方案](https://github.com/fancyboynet/fis3-www-demo)
 
-## 实现的功能
+## 主要功能
 1. 自动刷新
 2. 数据模拟
 3. es6/7语法
-4. css-loader
-5. file-loader
+4. 多页可配置(例如只够建20个页面中的某3个页面)
 
 ## todo (欢迎pr)
 1. 单元测试

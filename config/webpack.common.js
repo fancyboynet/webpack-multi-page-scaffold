@@ -18,10 +18,20 @@ let plugins = hasStaticRoot ? [
 
 let pages = fs.readdirSync(pageRoot)
 
+function isIncludePage(pageName){
+  if(!buildConfig.includePage || !buildConfig.includePage.length){
+    return true
+  }
+  return buildConfig.includePage.includes(pageName)
+}
+
 // 遍历pages目录
 pages.map((v, i) => {
   let stat = fs.statSync(path.join(pageRoot, v))
   if (!stat.isDirectory()) {
+    return
+  }
+  if(!isIncludePage(v)){
     return
   }
   entry[v] = `${pageRoot}/${v}/index.js`
