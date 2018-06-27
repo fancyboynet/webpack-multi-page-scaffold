@@ -6,6 +6,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const mockRouter = require('../mock/router')
 const buildConfig = require('./build')
+const pages = require('./pages')
+
+function createDevHistoryApiFallback () {
+  if(!pages || !pages.length){
+    return true
+  }
+  let reg = new RegExp('^\\/(' + pages.join('|') + ')(\\/|$)')
+  return  {
+    rewrites: [
+      {
+        from: reg,
+        to(context) {
+          return `/${context.match[1]}.html`;
+        }
+      }
+    ]
+  }
+}
 
 let config = merge(common, {
   mode: 'development',
@@ -23,7 +41,7 @@ let config = merge(common, {
     }),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: [`Your application is running here: http://${buildConfig.host}:${buildConfig.port}${buildConfig.publicPath}app.html`],
+        messages: [`Your application is running here: http://${buildConfig.host}:${buildConfig.port}${buildConfig.publicPath}app`],
       }
     })
   ],
@@ -38,7 +56,7 @@ let config = merge(common, {
     hot: true,
     host: buildConfig.host,
     port: buildConfig.port,
-    historyApiFallback: true,
+    historyApiFallback: createDevHistoryApiFallback(),
     quiet: true,
     before: mockRouter,
     publicPath: buildConfig.publicPath

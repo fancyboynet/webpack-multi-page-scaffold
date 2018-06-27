@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const pages = require('./pages')
 const buildConfig = require('./build')
 const isDevMode = process.env.NODE_ENV !== 'production'
 
@@ -15,8 +16,6 @@ let entry = {}
 let plugins = hasStaticRoot ? [
   new CopyWebpackPlugin([ { from: staticRoot, to: `${buildConfig.staticName}` } ])
 ] : []
-
-let pages = fs.readdirSync(pageRoot)
 
 function isIncludePage(pageName){
   if(!buildConfig.includePage || !buildConfig.includePage.length){
