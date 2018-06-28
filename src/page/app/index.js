@@ -5,10 +5,11 @@ import data from './data.json' // import json file
 hello()
 console.log(data)
 // 异步加载
-import(/* webpackChunkName: "print" */ './print').then((printMe) => {
-  console.log(printMe)
+import('./print').then((printMe) => {
+  console.log(222, printMe)
   printMe.default()
 })
+console.log(111)
 // 数据模拟
 axios.get('/data').then(data => {
   console.log(data)

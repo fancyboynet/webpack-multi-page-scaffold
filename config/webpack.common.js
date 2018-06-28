@@ -14,25 +14,11 @@ let hasStaticRoot = fs.existsSync(staticRoot)
 let pageRoot = path.join(srcRoot, './page')
 let entry = {}
 let plugins = hasStaticRoot ? [
-  new CopyWebpackPlugin([ { from: staticRoot, to: `${buildConfig.staticName}` } ])
+  new CopyWebpackPlugin([{from: staticRoot, to: `${buildConfig.staticName}`}])
 ] : []
-
-function isIncludePage(pageName){
-  if(!buildConfig.includePage || !buildConfig.includePage.length){
-    return true
-  }
-  return buildConfig.includePage.includes(pageName)
-}
 
 // 遍历pages目录
 pages.map((v, i) => {
-  let stat = fs.statSync(path.join(pageRoot, v))
-  if (!stat.isDirectory()) {
-    return
-  }
-  if(!isIncludePage(v)){
-    return
-  }
   entry[v] = `${pageRoot}/${v}/index.js`
   plugins.push(new HtmlWebpackPlugin({
     chunks: ['runtime', 'common', v],
@@ -40,11 +26,13 @@ pages.map((v, i) => {
     template: `${pageRoot}/${v}/index.html`
   }))
 })
+
+
 module.exports = {
   entry: entry,
   plugins: plugins,
   resolve: {
-    modules: [srcRoot, "node_modules"]
+    modules: [srcRoot, 'node_modules']
   },
   module: {
     rules: [
@@ -67,7 +55,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          isDevMode ? "style-loader": MiniCssExtractPlugin.loader,
+          isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -82,17 +70,24 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: [
-              '@babel/plugin-transform-runtime',
-              '@babel/plugin-syntax-dynamic-import',
-              '@babel/plugin-proposal-object-rest-spread',
-            ]
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: [
+                '@babel/plugin-transform-runtime',
+                '@babel/plugin-syntax-dynamic-import',
+                '@babel/plugin-proposal-object-rest-spread',
+              ]
+            }
           }
-        },
+        ].concat(buildConfig.openStandardJs ? [{
+          loader: 'standard-loader',
+          options: {
+            parser: 'babel-eslint'
+          }
+        }] : []),
         exclude: /node_modules/
       }
     ]

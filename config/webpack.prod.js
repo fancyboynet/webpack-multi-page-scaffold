@@ -37,6 +37,7 @@ module.exports = merge(common, {
     })
   ],
   output: {
+    publicPath: buildConfig.publicPath,
     filename: `${buildConfig.staticName}/[name].bundle.js`,
     chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].bundle.js`,
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
