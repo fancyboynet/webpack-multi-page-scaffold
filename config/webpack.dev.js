@@ -53,7 +53,7 @@ let config = merge(common, {
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
   },
   devServer: {
-    contentBase: [path.resolve(__dirname, `../${buildConfig.outputName}`), path.resolve(__dirname, `../mock`)],
+    contentBase: [path.resolve(__dirname, `../mock`), path.resolve(__dirname, `../${buildConfig.outputName}`)],
     hot: true,
     host: buildConfig.host,
     port: buildConfig.port,
