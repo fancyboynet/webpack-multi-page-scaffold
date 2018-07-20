@@ -5,7 +5,11 @@
   font-style: normal;
 }
 
-body {
+body:before {
+  content: "";
+  display: block;
+  width: 550px;
+  height: 348px;
   background: url("./bg.png") no-repeat;
 }
 

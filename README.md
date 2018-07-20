@@ -132,3 +132,25 @@ axios.get('/data').then(data => {
   console.log(data)
 })
 ```
+
+## 构建配置
+```
+{
+  "outputName": "dist",
+  "staticName": "static",
+  "templateName": "",
+  "publicPath": "/",
+  "includePage": [],
+  "host": "localhost",
+  "port": 8081,
+  "openStandardJs": true,
+  "pageTemplateWithoutHtmlLoader": false,
+  ...
+}
+```
+[完成配置](./config/build.json)
+
+### pageTemplateWithoutHtmlLoader
+有时候我们想在编译阶段往页面模板传变量，[html-webpack-plugin已经支持](pageTemplateWithoutHtmlLoader)，但是由于默认所有`.html`文件
+都会再被`html-loader`编译一次，而`html-loader`是会忽略`html-webpack-plugin`定义的变量的，所以增加了这个配置来
+满足一些特殊需求

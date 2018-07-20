@@ -6,5 +6,6 @@
   "includePage": [],
   "host": "localhost",
   "port": 8081,
-  "openStandardJs": true
+  "openStandardJs": true,
+  "pageTemplateWithoutHtmlLoader": false
 }
