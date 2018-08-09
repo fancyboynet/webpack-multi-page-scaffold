@@ -14,23 +14,26 @@ export default class Base {
     }
     return data
   }
-  convertToSeverData() {
+  convertToSeverData () {
     let data = {}
-    if(!this.__map__){
+    if (!this.__map__) {
       return data
     }
     Object.keys(this.__map__).map((i) => {
       let k = this.__map__[i]
       let v = this[i]
-      if(!Array.isArray(v)){
-        if(!(v instanceof Base)){
-          return data[k] = v
+      if (!Array.isArray(v)) {
+        if (!(v instanceof Base)) {
+          data[k] = v
+          return
         }
-        return data[k] = v.convertToSeverData()
+        data[k] = v.convertToSeverData()
+        return
       }
       let first = v[0]
-      if(!v.length || !(first instanceof Base)){ //普通array
-        return data[k] = v
+      if (!v.length || !(first instanceof Base)) { // 普通array
+        data[k] = v
+        return
       }
       data[k] = v.map(j => j.convertToSeverData())
     })
