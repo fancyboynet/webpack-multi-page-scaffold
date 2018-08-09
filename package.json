@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "start": "webpack-dev-server --progress --config ./config/webpack.dev.js",
-    "newpage": "node ./script/newpage.js"
+    "newpage": "node ./script/newpage.js",
+    "lint": "standard src/**/*.js"
   },
   "keywords": [
     "webpack",
@@ -34,6 +35,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.14.3",
     "install": "^0.11.0",
     "mini-css-extract-plugin": "^0.2.0",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
@@ -56,5 +58,10 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
 }

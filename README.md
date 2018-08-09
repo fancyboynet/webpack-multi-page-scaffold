@@ -10,7 +10,8 @@
 1. 自动刷新
 1. 数据模拟
 1. 多页可配置(例如只够建20个页面中的某3个页面)
-1. [standard.js](https://standardjs.com/)语法检查
+1. 编译[standard.js](https://standardjs.com/)语法检查
+1. commit前[standard.js](https://standardjs.com/)语法检查
 
 ## todo (欢迎pr)
 1. 单元测试
