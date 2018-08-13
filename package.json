@@ -7,7 +7,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "start": "webpack-dev-server --progress --config ./config/webpack.dev.js",
     "newpage": "node ./script/newpage.js",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint --fix src/**/*.js"
   },
   "keywords": [
     "webpack",
