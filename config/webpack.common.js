@@ -84,9 +84,15 @@ module.exports = {
             }
           }
         ].concat(buildConfig.openStandardJs ? [{
-          loader: 'standard-loader',
+          loader: 'eslint-loader',
           options: {
-            parser: 'babel-eslint'
+            "parser": "babel-eslint",
+            "parserOptions": {
+              "sourceType": "module"
+            },
+            "extends": [
+              "standard"
+            ]
           }
         }] : []),
         exclude: /node_modules/
