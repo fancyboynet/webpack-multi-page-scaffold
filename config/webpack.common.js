@@ -83,18 +83,7 @@ module.exports = {
               ]
             }
           }
-        ].concat(buildConfig.openStandardJs ? [{
-          loader: 'eslint-loader',
-          options: {
-            "parser": "babel-eslint",
-            "parserOptions": {
-              "sourceType": "module"
-            },
-            "extends": [
-              "standard"
-            ]
-          }
-        }] : []),
+        ].concat(buildConfig.openStandardJs ? ['eslint-loader'] : []),
         exclude: /node_modules/
       }
     ]
