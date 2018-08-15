@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const pages = require('./pages')
 const buildConfig = require('./build')
 const isDevMode = process.env.NODE_ENV !== 'production'
+const needEslint = isDevMode && buildConfig.openStandardJs
 
 let srcRoot = path.join(process.cwd(), './src')
 let staticRoot = path.join(srcRoot, './static')
@@ -83,7 +84,7 @@ module.exports = {
               ]
             }
           }
-        ].concat(buildConfig.openStandardJs ? ['eslint-loader'] : []),
+        ].concat(needEslint ? ['eslint-loader'] : []),
         exclude: /node_modules/
       }
     ]
