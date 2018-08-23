@@ -7,6 +7,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const common = require('./webpack.common.js')
 const buildConfig = require('./build')
+const isCDN = !!process.env.CDN_ENV
 
 module.exports = merge(common, {
   optimization: {
@@ -37,7 +38,7 @@ module.exports = merge(common, {
     })
   ],
   output: {
-    publicPath: buildConfig.publicPath,
+    publicPath: isCDN ? buildConfig.cdnPublicPath : buildConfig.publicPath,
     filename: `${buildConfig.staticName}/[name].bundle.js`,
     chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].bundle.js`,
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
