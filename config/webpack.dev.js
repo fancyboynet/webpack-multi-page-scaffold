@@ -4,9 +4,11 @@ const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const ip = require('ip')
 const mockRouter = require('../mock/router')
 const buildConfig = require('./build')
 const pages = require('./pages')
+let host = buildConfig.host === '0.0.0.0' ? ip.address() : buildConfig.host
 
 function createDevHistoryApiFallback () {
   if(!pages || !pages.length){
@@ -41,7 +43,7 @@ let config = merge(common, {
     }),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: [`Your application is running here: http://${buildConfig.host}:${buildConfig.port}${buildConfig.publicPath}app`],
+        messages: [`Your application is running here: http://${host}:${buildConfig.port}${buildConfig.publicPath}app`],
       }
     })
   ],
@@ -55,7 +57,7 @@ let config = merge(common, {
   devServer: {
     contentBase: [path.resolve(__dirname, `../mock`), path.resolve(__dirname, `../${buildConfig.outputName}`)],
     hot: true,
-    host: buildConfig.host,
+    host: host,
     port: buildConfig.port,
     historyApiFallback: createDevHistoryApiFallback(),
     quiet: true,
