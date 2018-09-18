@@ -11,6 +11,7 @@
 1. 数据模拟
 1. 多页可配置(例如只够建20个页面中的某3个页面)
 1. [standard.js](https://standardjs.com/)语法检查
+1. `git pull`检测`package.json`是否改变，改变时会重新安装包
 
 
 ## todo (欢迎pr)
