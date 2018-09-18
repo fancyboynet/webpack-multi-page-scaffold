@@ -156,4 +156,4 @@ axios.get('/data').then(data => {
 都会再被`html-loader`编译一次，而`html-loader`是会忽略`html-webpack-plugin`定义的变量的，所以增加了这个配置来
 满足一些特殊需求
 
-### 6
+### 7
