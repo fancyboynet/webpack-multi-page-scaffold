@@ -2,7 +2,7 @@ const buildConfig = require('../config/build')
 const shell = require('shelljs')
 const chalk = require('chalk')
 if (!buildConfig.reInstallOnPkgChange) {
-  shell.exit(1)
+  shell.exit(0)
 }
 if (!shell.which('git')) {
   shell.echo('Sorry, this script requires git')
@@ -14,8 +14,8 @@ const noTargetChange = targetFiles.every((file) => {
   return stdout.indexOf(file) === -1
 })
 if (noTargetChange) {
-  shell.exit(1)
+  shell.exit(0)
 }
-console.log(chalk.red(`package.json changed, re-install now.`))
+console.log(chalk.red('package.json changed, re-install now.'))
 shell.exec('npm i')
 shell.exit(0)
