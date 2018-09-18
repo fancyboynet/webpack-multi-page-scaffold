@@ -1,6 +1,5 @@
 const buildConfig = require('../config/build')
 const shell = require('shelljs')
-const chalk = require('chalk')
 if (!buildConfig.reInstallOnPkgChange) {
   shell.exit(0)
 }
@@ -16,6 +15,6 @@ const noTargetChange = targetFiles.every((file) => {
 if (noTargetChange) {
   shell.exit(0)
 }
-console.log(chalk.blue('package.json changed, re-install now.'))
-shell.exec('npm i')
+shell.echo('package.json changed, re-install now.')
+shell.exec('npm i -d')
 shell.exit(0)
