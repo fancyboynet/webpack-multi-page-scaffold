@@ -155,5 +155,3 @@ axios.get('/data').then(data => {
 有时候我们想在编译阶段往页面模板传变量，[html-webpack-plugin已经支持](pageTemplateWithoutHtmlLoader)，但是由于默认所有`.html`文件
 都会再被`html-loader`编译一次，而`html-loader`是会忽略`html-webpack-plugin`定义的变量的，所以增加了这个配置来
 满足一些特殊需求
-
-### 7
