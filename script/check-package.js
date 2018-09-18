@@ -16,6 +16,6 @@ const noTargetChange = targetFiles.every((file) => {
 if (noTargetChange) {
   shell.exit(1)
 }
-console.log(`${chalk.red(`package.json`)} changed, re-install now.`)
+console.log(chalk.red(`package.json changed, re-install now.`))
 shell.exec('npm i')
 shell.exit(0)
