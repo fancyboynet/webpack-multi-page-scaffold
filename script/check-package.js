@@ -1,8 +1,6 @@
 const buildConfig = require('../config/build')
 const shell = require('shelljs')
 const chalk = require('chalk')
-console.log(22222)
-console.log(chalk.blue('package.json changed, re-install now.'))
 if (!buildConfig.reInstallOnPkgChange) {
   shell.exit(0)
 }

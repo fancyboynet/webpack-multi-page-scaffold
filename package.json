@@ -8,8 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "start": "webpack-dev-server --progress --config ./config/webpack.dev.js",
     "newpage": "node ./script/newpage.js",
-    "lint": "eslint --fix src/**/*.js",
-    "check-package": "node ./script/check-package.js"
+    "lint": "eslint --fix src/**/*.js"
   },
   "keywords": [
     "webpack",
@@ -80,7 +79,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "post-merge": "npm run check-package"
+      "post-merge": "node ./script/check-package.js"
     }
   }
 }
