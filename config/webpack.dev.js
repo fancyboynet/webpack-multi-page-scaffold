@@ -43,7 +43,7 @@ let config = merge(common, {
     }),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: [`Your application is running here: http://${host}:${buildConfig.port}${buildConfig.publicPath}app`],
+        messages: [`Your application is running here: http://${host}:${buildConfig.port}${buildConfig.publicPath}`],
       }
     })
   ],
