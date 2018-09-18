@@ -18,3 +18,4 @@ if (noTargetChange) {
 }
 console.log(`${chalk.red(`package.json`)} changed, re-install now.`)
 shell.exec('npm i')
+shell.exit(0)
