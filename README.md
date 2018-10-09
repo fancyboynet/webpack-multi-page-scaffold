@@ -12,6 +12,7 @@
 1. 多页可配置(例如只够建20个页面中的某3个页面)
 1. [standard.js](https://standardjs.com/)语法检查
 1. `git pull`检测`package.json`是否改变，改变时会重新安装包
+1. `git checkout`检测`package.json`是否改变，改变时会重新安装包
 
 
 ## todo (欢迎pr)
@@ -150,7 +151,7 @@ axios.get('/data').then(data => {
   ...
 }
 ```
-[完成配置](./config/build.json)
+[完整配置](./config/build.json)
 
 ### pageTemplateWithoutHtmlLoader
 有时候我们想在编译阶段往页面模板传变量，[html-webpack-plugin已经支持](pageTemplateWithoutHtmlLoader)，但是由于默认所有`.html`文件
