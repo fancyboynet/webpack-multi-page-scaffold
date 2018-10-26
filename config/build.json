@@ -9,5 +9,6 @@
   "port": 8081,
   "openStandardJs": true,
   "pageTemplateWithoutHtmlLoader": false,
-  "reInstallOnPkgChange": true
+  "reInstallOnPkgChange": true,
+  "notReInstallOnPkgChangeFeatures": []
 }
