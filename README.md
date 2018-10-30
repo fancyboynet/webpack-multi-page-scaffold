@@ -15,6 +15,12 @@
 1. `git checkout`检测`package.json`是否改变，改变时会重新安装包
 
 
+## 创建项目
+
+```
+npx create-webpack-multi-page-app myapp
+```
+
 ## todo (欢迎pr)
 1. 单元测试
 ### 目录
