@@ -10,6 +10,7 @@ const buildConfig = require('./build')
 const isCDN = !!process.env.CDN_ENV
 
 module.exports = merge(common, {
+  mode: 'production',
   optimization: {
     splitChunks: {
       chunks: 'all',
