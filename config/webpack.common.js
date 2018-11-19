@@ -23,7 +23,7 @@ pages.map((v, i) => {
   entry[v] = `${pageRoot}/${v}/index.js`
   plugins.push(new HtmlWebpackPlugin({
     chunks: ['runtime', 'common', v],
-    filename: isDevMode ? `${v}.html` : `${buildConfig.templateName}/${v}.html`,
+    filename: isDevMode ? `${v}.html` : `${buildConfig.templateName ? buildConfig.templateName + '/' : ''}${v}.html`,
     template: `${pageRoot}/${v}/index.html`
   }))
 })
