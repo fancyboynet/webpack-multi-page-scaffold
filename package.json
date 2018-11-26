@@ -79,8 +79,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "post-merge": "node ./script/check-package.js",
-      "post-checkout": "node ./script/check-package.js"
+      "post-merge": "cross-env FORCE_COLOR=1 node ./script/check-package.js",
+      "post-checkout": "cross-env FORCE_COLOR=1 node ./script/check-package.js"
     }
   }
 }
