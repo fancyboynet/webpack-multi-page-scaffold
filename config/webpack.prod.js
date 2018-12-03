@@ -16,9 +16,7 @@ module.exports = merge(common, {
       chunks: 'all',
       name: 'common'
     },
-    runtimeChunk: {
-      name: 'runtime'
-    },
+    runtimeChunk: 'single',
     minimizer: [
       new UglifyJsPlugin(),
       new OptimizeCssAssetsPlugin({})
@@ -40,7 +38,7 @@ module.exports = merge(common, {
   ],
   output: {
     publicPath: isCDN ? buildConfig.cdnPublicPath : buildConfig.publicPath,
-    filename: `${buildConfig.staticName}/[name].bundle.js`,
+    filename: `${buildConfig.staticName}/[name].[contenthash:${buildConfig.hashLength}].js`,
     chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].bundle.js`,
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
   }
