@@ -38,7 +38,7 @@ module.exports = merge(common, {
   ],
   output: {
     publicPath: isCDN ? buildConfig.cdnPublicPath : buildConfig.publicPath,
-    filename: `${buildConfig.staticName}/[name].[contenthash:${buildConfig.hashLength}].js`,
+    filename: `${buildConfig.staticName}/[name].[contenthash:7].js`,
     chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].bundle.js`,
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
   }
