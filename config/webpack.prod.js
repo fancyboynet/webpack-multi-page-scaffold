@@ -8,15 +8,23 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const common = require('./webpack.common.js')
 const buildConfig = require('./build')
 const isCDN = !!process.env.CDN_ENV
+const isNoHash = !!process.env.NO_HASH_ENV
 
 module.exports = merge(common, {
   mode: 'production',
   optimization: {
     splitChunks: {
-      chunks: 'all',
-      name: 'common'
+      cacheGroups: {
+        commons: {
+          test: 'vendor',
+          name: "vendor",
+          chunks: "all"
+        }
+      }
     },
-    runtimeChunk: 'single',
+    runtimeChunk: {
+      name: 'runtime'
+    },
     minimizer: [
       new UglifyJsPlugin(),
       new OptimizeCssAssetsPlugin({})
@@ -33,13 +41,13 @@ module.exports = merge(common, {
     }),
     new MiniCssExtractPlugin({
       filename: `${buildConfig.staticName}/[name].css`,
-      chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].css`
+      chunkFilename: isNoHash ? `${buildConfig.staticName}/[name].css` : `${buildConfig.staticName}/[name].[chunkhash:${buildConfig.hashLength}].css`
     })
   ],
   output: {
     publicPath: isCDN ? buildConfig.cdnPublicPath : buildConfig.publicPath,
-    filename: `${buildConfig.staticName}/[name].[contenthash:7].js`,
-    chunkFilename: `${buildConfig.staticName}/[name].[chunkhash:7].bundle.js`,
+    filename: isNoHash ? `${buildConfig.staticName}/[name].js` : `${buildConfig.staticName}/[name].[contenthash:${buildConfig.hashLength}].js`,
+    chunkFilename: isNoHash ? `${buildConfig.staticName}/[name].bundle.js` : `${buildConfig.staticName}/[name].[chunkhash:${buildConfig.hashLength}].bundle.js`,
     path: path.resolve(__dirname, `../${buildConfig.outputName}`)
   }
 })
