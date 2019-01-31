@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const common = require('./webpack.common.js')
 const buildConfig = require('./build')
@@ -26,7 +26,16 @@ module.exports = merge(common, {
       name: 'runtime'
     },
     minimizer: [
-      new UglifyJsPlugin(),
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false,
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
+      }),
       new OptimizeCssAssetsPlugin({})
     ]
   },
