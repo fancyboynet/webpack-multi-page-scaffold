@@ -90,6 +90,13 @@ module.exports = {
         ]
       },
       {
+        test: /src[/\\].+\.js$/,
+        use: needEslint ? ['eslint-loader'] : [],
+        exclude: [
+          staticRoot
+        ]
+      },
+      {
         test: /\.css$/,
         use: [
           isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
