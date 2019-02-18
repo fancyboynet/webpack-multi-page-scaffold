@@ -79,6 +79,9 @@
       "standard"
     ]
   },
+  "eslintIgnore": [
+    "src/static/**/*.js"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
