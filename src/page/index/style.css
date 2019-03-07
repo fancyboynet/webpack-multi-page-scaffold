@@ -1,19 +1,4 @@
-@font-face {
-  font-family: 'MyFont';
-  src: url('../../assets/font/iconfont.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-}
-
-body:before {
-  content: "";
-  display: block;
-  width: 550px;
-  height: 348px;
-  background: url("./bg.png") no-repeat;
-}
-
-h1 {
-  color: red;
-  font-family: 'MyFont';
+li{
+  margin: 0 0 2em;
+  border-bottom: 1px solid #ccc;
 }

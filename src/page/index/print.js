@@ -1,3 +1,3 @@
 export default () => {
-  console.log('I get called from print.js!')
+  document.querySelector('#async').textContent = 'I get called from print.js!'
 }
