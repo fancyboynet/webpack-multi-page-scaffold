@@ -48,6 +48,7 @@
     "install": "^0.11.0",
     "ip": "^1.1.5",
     "less-loader": "^4.1.0",
+    "lint-staged": "^8.1.5",
     "mini-css-extract-plugin": "^0.2.0",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
     "postcss-loader": "^2.1.5",
@@ -84,9 +85,15 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
+      "pre-commit": "lint-staged",
       "post-merge": "cross-env FORCE_COLOR=1 node ./script/check-package.js",
       "post-checkout": "cross-env FORCE_COLOR=1 node ./script/check-package.js"
     }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
