@@ -24,5 +24,5 @@ if (noTargetChange) {
   shell.exit(0)
 }
 console.log(chalk.green('package.json changed, re-install now.'))
-shell.exec('npm i -d')
+shell.exec('yarn')
 shell.exit(0)

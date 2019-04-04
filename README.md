@@ -77,24 +77,24 @@ npx create-webpack-multi-page-app myapp
 ## 安装
 
 ```
-$ npm install
+$ yarn
     
 ```
 
 ## 开发/调试
 ```$xslt
-$ npm run start
+$ yarn run start
 $ open http://localhost:8081/app.html
 ```
 
 ## 构建
 ```$xslt
-$ npm run build
+$ yarn run build
 ```
 
 ## 创建新页面
 ```$xslt
-$ npm run new pageName
+$ yarn run new pageName
 ```
 
 ## 相对源码根目录引入模块
