@@ -55,6 +55,7 @@
     "sass-loader": "^7.1.0",
     "shelljs": "^0.8.2",
     "style-loader": "^0.20.3",
+    "svg-inline-loader": "^0.8.0",
     "terser-webpack-plugin": "^1.2.1",
     "url-loader": "^1.0.1",
     "webpack": "^4.25.1",

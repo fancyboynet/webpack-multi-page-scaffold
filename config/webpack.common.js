@@ -58,10 +58,10 @@ module.exports = {
       {
         test: /\.html$/,
         use: 'html-loader',
-        exclude: buildConfig.pageTemplateWithoutHtmlLoader ? /src[\\/]page[\\/].+[\\/]index\.html$/ : []
+        exclude: buildConfig.pageTemplateWithoutHtmlLoader ? srcRoot : []
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|otf|mp4|webm|ogg|mp3|wav|flac|aac)$/,
+        test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf|otf|mp4|webm|ogg|mp3|wav|flac|aac)$/,
         use: [
           {
             loader: 'url-loader',
@@ -71,6 +71,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.js$/,
