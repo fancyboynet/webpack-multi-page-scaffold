@@ -24,5 +24,6 @@ if (noTargetChange) {
   shell.exit(0)
 }
 console.log(chalk.green('package.json changed, re-install now.'))
-shell.exec('yarn')
+const inStallCommand = shell.which('yarn') ? 'yarn' : 'npm i'
+shell.exec(inStallCommand)
 shell.exit(0)
