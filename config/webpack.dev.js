@@ -57,8 +57,9 @@ let config = merge(common, {
   devServer: {
     contentBase: [path.resolve(__dirname, `../mock`), path.resolve(__dirname, `../${buildConfig.outputName}`)],
     hot: true,
-    host: host,
+    host: buildConfig.host,
     port: buildConfig.port,
+    clientLogLevel: 'error',
     historyApiFallback: createDevHistoryApiFallback(),
     quiet: true,
     before: mockRouter,
