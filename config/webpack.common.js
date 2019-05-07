@@ -41,7 +41,6 @@ pages.map((v, i) => {
 if (hasStaticRoot) {
   plugins.push(new CopyWebpackPlugin([{from: staticRoot, to: `${buildConfig.staticName}`}]))
 }
-// plugins.push(new webpack.HashedModuleIdsPlugin())
 
 module.exports = {
   entry: entry,
@@ -67,7 +66,8 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: isDevMode ? '[name].[ext]' : (isNoHash ? `${buildConfig.staticName}/[name].[ext]` : `${buildConfig.staticName}/[name].[hash:${buildConfig.hashLength}].[ext]`)
+              context: srcRoot,
+              name: isDevMode ? '[path][name].[ext]' : (isNoHash ? `${buildConfig.staticName}/[path][name].[ext]` : `${buildConfig.staticName}/[name].[hash:${buildConfig.hashLength}].[ext]`)
             }
           }
         ]
