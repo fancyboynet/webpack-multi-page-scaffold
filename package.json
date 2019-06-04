@@ -1,6 +1,6 @@
 {
   "name": "webpack-multi-page-scaffold",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "start": "webpack-dev-server --progress --config ./config/webpack.dev.js",
     "newpage": "node ./script/newpage.js",
+    "preinstall": "node ./script/check-install-with-yarn.js",
     "lint": "eslint --fix src/**/*.js"
   },
   "keywords": [
