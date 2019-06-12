@@ -8,7 +8,7 @@ const buildConfig = require('./build')
 const pages = require('./pages')
 
 const isDevMode = process.env.NODE_ENV !== 'production'
-const isNoHash = !!process.env.NO_HASH_ENV
+const isNoHash = process.env.NO_HASH_ENV === 'true'
 const needEslint = isDevMode && buildConfig.openStandardJs
 
 let srcRoot = path.join(process.cwd(), './src')

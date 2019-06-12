@@ -1,11 +1,11 @@
 {
   "name": "webpack-multi-page-scaffold",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-cdn": "cross-env NODE_ENV=production CDN_ENV=1 webpack --config ./config/webpack.prod.js",
-    "build-no-hash": "cross-env NODE_ENV=production NO_HASH_ENV=1 webpack --config ./config/webpack.prod.js",
+    "build-cdn": "cross-env NODE_ENV=production CDN_ENV=true webpack --config ./config/webpack.prod.js",
+    "build-no-hash": "cross-env NODE_ENV=production NO_HASH_ENV=true webpack --config ./config/webpack.prod.js",
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "start": "webpack-dev-server --progress --config ./config/webpack.dev.js",
     "newpage": "node ./script/newpage.js",
