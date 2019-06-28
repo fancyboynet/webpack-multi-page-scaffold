@@ -1,7 +1,6 @@
-const shell = require('shelljs')
-const { log } = require('./utils')
+const package = require('../package.json')
 if (process.env.npm_execpath.indexOf('yarn') === -1) {
-  log.error('Please use yarn for installing.')
-  shell.exit(1)
+  console.error(`[${package.name}]Please use yarn for installing.`)
+  process.exit(1)
 }
-shell.exit(0)
+process.exit(0)
