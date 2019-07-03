@@ -65,7 +65,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10000,
+              limit: 8192,
               context: srcRoot,
               name: isDevMode ? '[path][name].[ext]' : (isNoHash ? `${buildConfig.staticName}/[path][name].[ext]` : `${buildConfig.staticName}/[name].[hash:${buildConfig.hashLength}].[ext]`)
             }
@@ -78,17 +78,20 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: [
-              '@babel/plugin-transform-runtime',
-              '@babel/plugin-syntax-dynamic-import',
-              '@babel/plugin-proposal-object-rest-spread',
-            ]
+        use: [
+          'cache-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: [
+                '@babel/plugin-transform-runtime',
+                '@babel/plugin-syntax-dynamic-import',
+                '@babel/plugin-proposal-object-rest-spread',
+              ]
+            }
           }
-        }].concat(needEslint ? ['eslint-loader'] : []),
+        ].concat(needEslint ? ['eslint-loader'] : []),
         include: [
           srcRoot
         ]
