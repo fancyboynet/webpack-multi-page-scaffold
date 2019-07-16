@@ -63,7 +63,8 @@ let config = merge(common, {
     historyApiFallback: createDevHistoryApiFallback(),
     quiet: true,
     before: mockRouter,
-    publicPath: buildConfig.publicPath
+    publicPath: buildConfig.publicPath,
+    disableHostCheck: true
   }
 })
 
