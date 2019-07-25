@@ -1,3 +1,6 @@
+# 不再维护
+框架已经集成到[rubik-cli](https://github.com/fancyboynet/rubik-cli)
+
 # 基于webpack纯静态多页面解决方案
 框架主要实现前端开发中最常用的基础功能，方便扩展。
 和[fis推荐目录](https://github.com/fex-team/fis3-solutions/blob/master/intro.md#目录规范-1)不同的是，这里没有规定具体的widget目录，只约定主要的page目录。
