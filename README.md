@@ -1,5 +1,5 @@
 # 不再维护
-框架已经集成到[rubik-cli](https://github.com/fancyboynet/rubik-cli)
+框架已经集成到[rubik-cli](https://github.com/rubikjs/rubik-cli)
 
 # 基于webpack纯静态多页面解决方案
 框架主要实现前端开发中最常用的基础功能，方便扩展。
